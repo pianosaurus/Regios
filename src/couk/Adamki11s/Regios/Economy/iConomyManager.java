@@ -8,7 +8,7 @@ public class iConomyManager extends Buying {
 	
 	@SuppressWarnings("static-access")
 	private double getBalance(Player p){
-		return EconomyCore.iconomy.getAccount(p.getName()).getHoldings().balance();
+		return EconomyCore.iconomy.getBank().getAccount(p.getName()).getBalance();
 	}
 	
 	public boolean canAffordRegion(Player p, int price){
@@ -17,8 +17,8 @@ public class iConomyManager extends Buying {
 	
 	@SuppressWarnings("static-access")
 	public void buyRegion(Region r, String buyer, String seller, int price){
-		EconomyCore.iconomy.getAccount(seller).getHoldings().add(price);
-		EconomyCore.iconomy.getAccount(buyer).getHoldings().subtract(price);	
+		EconomyCore.iconomy.getBank().getAccount(seller).add(price);
+		EconomyCore.iconomy.getBank().getAccount(buyer).subtract(price);
 		super.buy(seller, buyer, r, price);
 	}
 
